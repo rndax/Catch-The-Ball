@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catch the Ball</title>
+    <style>
+        body { text-align: center; font-family: Arial; margin-top: 50px; }
+        #game { width: 600px; height: 400px; border: 2px solid #333; margin: 0 auto; position: relative; background: #f0f0f0; }
+        #ball { width: 50px; height: 50px; background: red; border-radius: 50%; position: absolute; cursor: pointer; }
+        #score, #timer { font-size: 24px; margin: 10px; }
+        button { padding: 10px 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Catch the Ball!</h1>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 30</div>
+    <div id="game"><div id="ball"></div></div>
+    <button onclick="startGame()">Start game</button>
+
+    <script>
+        let score = 0, timeLeft = 30, gameInterval, timerInterval;
+        const ball = document.getElementById('ball');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        
+        function startGame() {
+            score = 0; timeLeft = 30;
+            scoreDisplay.textContent = `Score: ${score}`;
+            timerDisplay.textContent = `Time: ${timeLeft}`;
+            clearInterval(gameInterval); clearInterval(timerInterval);
+            moveBall();
+            gameInterval = setInterval(moveBall, 600);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                timerDisplay.textContent = `Time: ${timeLeft}`;
+                if(timeLeft <= 0) endGame();
+            }, 1000);
+        }
+        
+        function moveBall() {
+            const gameRect = document.getElementById('game').getBoundingClientRect();
+            const x = Math.random() * (gameRect.width - 50);
+            const y = Math.random() * (gameRect.height - 50);
+            ball.style.left = `${x}px`;
+            ball.style.top = `${y}px`;
+        }
+        
+        function endGame() {
+            clearInterval(gameInterval); clearInterval(timerInterval);
+            alert(`Game over! Your score: ${score}`);
+        }
+        
+        ball.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+            moveBall();
+        });
+    </script>
+</body>
+</html>
