@@ -3,8 +3,10 @@ A simple and engaging game where you need to click on appearing balls to score a
 
 ## ✨ Features
     🕹️ Simple Gameplay - Click on balls to earn points
+    🎨 Dark Theme with neon elements and smooth animations
     ⏱️ Time Limit - 30 seconds to score maximum points
     📱 Responsive Design - Works on computers and mobile devices
+    💾 Local Storage - High score persists in your browser
     
 ## 🚀 How to Play
 1) Click the "Start Game" button
@@ -13,7 +15,9 @@ A simple and engaging game where you need to click on appearing balls to score a
 
 ## 🛠️ Technologies
 - HTML5 - Game structure
+- CSS3 - Styling and animations
 - JavaScript - Game logic
+- Local Storage - High score persistence
 
 ## 📥 Installation & Launch
 1) Download the index.html file
